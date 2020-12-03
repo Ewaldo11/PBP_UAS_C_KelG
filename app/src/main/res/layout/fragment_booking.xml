@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="mtr"
+            type="com.example.tubes_kelg_c.RecyclerViewListMotor" />
+    </data>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/booking_layout">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_motor"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/activity_recycler_view_list_motor" />
+
+
+        <Button
+            android:id="@+id/btnSewa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:background="@color/colorAccent"
+            android:text="Sewa"/>
+
+        <Button
+            android:id="@+id/btnDaftarBooking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:background="@color/colorAccent"
+            android:text="Daftar Booking"/>
+
+    </LinearLayout>
+
+</layout>

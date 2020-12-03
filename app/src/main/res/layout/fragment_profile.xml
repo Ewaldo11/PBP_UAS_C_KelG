@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<ScrollView-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent">-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageButton
+        android:id="@+id/open_camera"
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/ic_baseline_account_circle_24"
+        android:backgroundTint="#0B0808" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Profile"
+        android:gravity="center"
+        android:textSize="24dp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="Fullname"
+                    android:textSize="14dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_marginBottom="16dp"
+                    style="@style/TextAppearance.MaterialComponents.Overline"
+                    android:layout_marginStart="5dp"
+                    android:id="@+id/txtFullname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="Username"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_marginBottom="16dp"
+                    android:id="@+id/textUsername"
+                    style="@style/TextAppearance.MaterialComponents.Overline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="No Telp"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_marginBottom="16dp"
+                    style="@style/TextAppearance.MaterialComponents.Overline"
+                    android:layout_marginStart="5dp"
+                    android:id="@+id/texttelp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="Email"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_marginBottom="8dp"
+                    style="@style/TextAppearance.MaterialComponents.Overline"
+                    android:layout_marginStart="5dp"
+                    android:id="@+id/textemail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_gravity="center"
+        android:id="@+id/btn_edit"
+        android:background="@color/colorAccent"
+        android:text="Edit"
+        android:textColor="#FFFFFF"/>
+</LinearLayout>
+
+<!--</ScrollView>-->

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home_menu"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/home"/>
+    <item
+        android:id="@+id/booking_menu"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_two_wheeler_24"
+        android:title="@string/sewa"/>
+    <item
+        android:id="@+id/place_menu"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_place_24"
+        android:title="@string/place"/>
+    <item
+        android:id="@+id/profile_menu"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:title="@string/profile"/>
+</menu>

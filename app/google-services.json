@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "284860719744",
+    "firebase_url": "https://tubeskelgc.firebaseio.com",
+    "project_id": "tubeskelgc",
+    "storage_bucket": "tubeskelgc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:284860719744:android:04a097056ef9c9463cfc65",
+        "android_client_info": {
+          "package_name": "com.example.tubes_kelg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "284860719744-ib9j15p9cmh9iv5urmhsj2l5b6g0etod.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAK5OMbQJ4YfYarII80B0bsM4LjOmJim6Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "284860719744-ib9j15p9cmh9iv5urmhsj2l5b6g0etod.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
