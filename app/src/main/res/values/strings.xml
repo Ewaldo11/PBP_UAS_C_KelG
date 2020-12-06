@@ -1,10 +1,18 @@
 <resources>
-    <string name="app_name">TUBES_KelG</string>
+    <string name="app_name">TUBES_UAS</string>
     <string name="home">Home</string>
     <string name="sewa">Booking</string>
     <string name="place">Place</string>
+    <string name="review">Review</string>
     <string name="profile">Profile</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="mapbox_access_token">pk.eyJ1IjoiZXdhbGRvIiwiYSI6ImNrZmxjNzJwbTBzcmEycnF1cHIwbDVmbmcifQ.ny06IRKQy9w6S5dko_ZLIA</string>
+
+    <string-array name="jenisMotor">
+        <item>Supra</item>
+        <item>Mio</item>
+        <item>Beat</item>
+        <item>Vario</item>
+    </string-array>
 </resources>

@@ -1,7 +1,7 @@
 package com.example.tubes_kelg_c;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,15 +12,29 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.tubes_kelg_c.database.DatabaseClient;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.tubes_kelg_c.api.UserAPI;
 import com.google.android.material.textfield.TextInputEditText;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.android.volley.Request.Method.POST;
 
 public class SewaMotor extends AppCompatActivity {
     TextInputEditText nama,notelp;
-    String pilihMotor;
+    String pilihMotor,namaPenyewa,notelpPenyewa;
     Button sewa;
     Penyewa penyewa;
     String harga;
+    int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +45,8 @@ public class SewaMotor extends AppCompatActivity {
         notelp = findViewById(R.id.input_telp);
         sewa = findViewById(R.id.sewaMotor);
 //        harga = findViewById(R.id.tampil_harga);
+
+
 
         String[] INPUTMOTOR = new String[] {"Vario", "Beat", "Vespa", "Mio", "NMax", "PCX", "Revo"};
 
@@ -44,19 +60,19 @@ public class SewaMotor extends AppCompatActivity {
                 String motor = adapterView.getItemAtPosition(i).toString();
                 pilihMotor = motor;
                 if(pilihMotor == "Vario"){
-                    harga = "Rp 80.000" ;
+                    harga = "80000" ;
                 }else if(pilihMotor == "Beat"){
-                    harga = "Rp 70.000";
+                    harga = "70000";
                 }else if(pilihMotor == "Vespa"){
-                    harga = "Rp 150.000";
+                    harga = "150000";
                 }else if(pilihMotor == "Mio"){
-                    harga = "Rp 60.000";
+                    harga = "60000";
                 }else if(pilihMotor == "NMax"){
-                    harga = "Rp 120.000";
+                    harga = "120000";
                 }else if(pilihMotor == "PCX"){
-                    harga = "Rp 130.000";
+                    harga = "130000";
                 }else if(pilihMotor == "Revo"){
-                    harga = "Rp 70.000";
+                    harga = "70000";
                 }
             }
         });
@@ -64,47 +80,81 @@ public class SewaMotor extends AppCompatActivity {
         sewa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AddPenyewa(penyewa);
+//                String namaPenyewa = nama.getText().toString();
+//                String notelpPenyewa= notelp.getText().toString();
+                String namaPenyewa = nama.getText().toString();
+                String notelpPenyewa = notelp.getText().toString();
+                String motor = namaMotor.getText().toString();
+//                    penyewa.setNamaPenyewa(namaPenyewa);
+//                    penyewa.setNoTelp(notelpPenyewa);
+//                    penyewa.setJenisMotor(pilihMotor);
+//                    penyewa.setHarga(harga);
+
+//                AddPenyewa(nama.getText().toString(), notelp.getText().toString(), pilihMotor, harga);
+
+                if(namaPenyewa.isEmpty() || notelpPenyewa.isEmpty() || motor.isEmpty())
+                    Toast.makeText(SewaMotor.this, "Data Tidak Boleh Kosong !", Toast.LENGTH_LONG).show();
+                else{
+                    //Double harga     = Double.parseDouble(txtHarga.getText().toString());
+                    penyewa = new Penyewa(namaPenyewa, notelpPenyewa, motor, Integer.parseInt(harga));
+                    AddPenyewa(penyewa);
+//                    if(status.equals("tambah"))
+//                        tambahBuku(namaBuku, pengarang, harga, image);
+//                    else
+//                        editBuku(idBuku, namaBuku, pengarang, harga, image);
+                }
             }
         });
     }
 
     public void AddPenyewa(final Penyewa penyewa){
-        final String namaPenyewa = nama.getText().toString();
-        final String telp = notelp.getText().toString();
-        final String motor = pilihMotor;
-//        final String hargaSewa = harga.getText().toString();
-        final String hargaSewa = harga;
+        RequestQueue queue = Volley.newRequestQueue(this);
 
-        class addPenyewa extends AsyncTask<Void, Void, Void> {
+        final ProgressDialog progressDialog;
+        progressDialog  =  new  ProgressDialog(this);
+        progressDialog.setMessage("loading 	");
+        progressDialog.setTitle("Menambahkan  data  penyewa");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.show();
 
+        StringRequest stringRequest = new StringRequest(POST, "https://rentalmotor.site/api/motor" , new Response.Listener<String>() {
             @Override
-            protected Void doInBackground(Void... voids) {
-                Penyewa penyewa = new Penyewa();
-                penyewa.setNama(namaPenyewa);
-                penyewa.setTelp(telp);
-                penyewa.setNamaMotor(motor);
-                penyewa.setHarga(hargaSewa);
-                DatabaseClient.getInstance(getApplicationContext()).getDatabase()
-                        .penyewaDao()
-                        .insert(penyewa);
-                return null;
+            public void onResponse(String response) {
+                progressDialog.dismiss();
+                try {
+                    JSONObject obj = new JSONObject(response);
+                    if (obj.getString("message").equals("Add Motor Success")) {
+                        Intent intent = new Intent(SewaMotor.this, DaftarBooking.class);
+                        startActivity(intent);
+                    }
+                    Toast.makeText(SewaMotor.this, obj.getString("message"), Toast.LENGTH_SHORT).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                Toast.makeText(SewaMotor.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
+        }){
             @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                Toast.makeText(getApplicationContext(), "Booking berhasil", Toast.LENGTH_SHORT).show();
-                Intent sewaMotor = new Intent(SewaMotor.this, DaftarBooking.class);
-                sewaMotor.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(sewaMotor);
-//                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//                transaction.hide(AddFragment.this).commit();
-            }
-        }
+            protected Map<String, String> getParams(){
+                Map<String,  String>    params  =  new HashMap<String,  String>();
+                params.put("nama_user",  penyewa.getNamaPenyewa());
+                params.put("no_telp",  penyewa.getNoTelp());
+                params.put("nama_motor",  penyewa.getJenisMotor());
+                params.put("harga_motor", penyewa.getStringHarga());
 
-        addPenyewa add = new addPenyewa();
-        add.execute();
+                return  params;
+
+            }
+        };
+
+        queue.add(stringRequest);
+
     }
 
 }

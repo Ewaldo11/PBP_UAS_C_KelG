@@ -13,7 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UpdateProfile"></activity>
+        <activity android:name=".Adapter.AdapterReview"></activity>
+        <activity android:name=".Views.FragmentReview" />
+        <activity android:name=".Views.TambahEditReview" />
+        <activity android:name=".UpdateProfile" />
         <activity android:name=".splash.LoginActivity" />
         <activity android:name=".geolocation.PlaceActivity" />
         <activity android:name=".splash.CheckActivity">

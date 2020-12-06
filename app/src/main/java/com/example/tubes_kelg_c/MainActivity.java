@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.tubes_kelg_c.Views.FragmentReview;
 import com.example.tubes_kelg_c.geolocation.PlaceActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -20,7 +21,6 @@ import com.google.firebase.messaging.FirebaseMessaging;
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     BottomNavigationView bottomNavigationView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +68,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 break;
             case R.id.place_menu:
                 startActivity(new Intent(this, PlaceActivity.class));
+                break;
+            case R.id.review_menu:
+                fragment = new FragmentReview();
                 break;
             case R.id.profile_menu:
                 fragment = new ProfileFragment();

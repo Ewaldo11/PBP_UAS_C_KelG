@@ -39,8 +39,8 @@ public class SplashActivity extends AppCompatActivity{
     Button btn_signup, btn_login;
     private FirebaseAuth firebaseAuth;
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference reference;
-    //    private FirebaseUser userid;
+    private DatabaseReference reference;
+    private FirebaseUser user;
     String userid;
 
     @Override
@@ -58,9 +58,14 @@ public class SplashActivity extends AppCompatActivity{
         result= findViewById(R.id.emPass);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        if (firebaseAuth != null) {
-            userid = firebaseAuth.getUid();
-        }
+        user = firebaseAuth.getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("users");
+        userid = user.getUid();
+
+//        firebaseAuth = FirebaseAuth.getInstance();
+//        if (firebaseAuth != null) {
+//            userid = firebaseAuth.getUid();
+//        }
 //        userid = firebaseAuth.getCurrentUser().getUid();
 //        userid = firebaseAuth.getCurrentUser();
 //        id = userid.getUid();

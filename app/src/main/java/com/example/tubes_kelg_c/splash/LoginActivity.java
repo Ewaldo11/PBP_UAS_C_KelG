@@ -18,13 +18,18 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
 
     private Button btn_login;
     private TextInputEditText email, password;
     FirebaseAuth firebaseAuth;
-    String emailuser;
+    private DatabaseReference reference;
+    private FirebaseUser user;
+    String emailuser, userid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,9 @@ public class LoginActivity extends AppCompatActivity {
         editor.putBoolean("login", true);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("users");
+        userid = user.getUid();
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override

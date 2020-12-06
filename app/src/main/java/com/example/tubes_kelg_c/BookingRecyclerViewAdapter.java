@@ -27,16 +27,16 @@ public class BookingRecyclerViewAdapter extends RecyclerView.Adapter<BookingRecy
     @NonNull
     @Override
     public BookingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.list_penyewa, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.activity_adapter_booking, parent, false);
         return new BookingViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BookingViewHolder holder, int position) {
-        Penyewa penyewa = penyewaList.get(position);
-        holder.textView.setText("Nama   : " + penyewa.getNama());
-        holder.textView1.setText("NoTelp: "+ penyewa.getTelp());
-        holder.textView2.setText("Motor : "+ penyewa.getNamaMotor());
+    public void onBindViewHolder(@NonNull BookingRecyclerViewAdapter.BookingViewHolder holder, int position) {
+        final Penyewa penyewa = penyewaList.get(position);
+        holder.textView.setText("Nama   : " + penyewa.getNamaPenyewa());
+        holder.textView1.setText("NoTelp: "+ penyewa.getNoTelp());
+        holder.textView2.setText("Motor : "+ penyewa.getJenisMotor());
         holder.textView3.setText("Harga : "+penyewa.getHarga());
     }
 
@@ -51,10 +51,10 @@ public class BookingRecyclerViewAdapter extends RecyclerView.Adapter<BookingRecy
 
         public BookingViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.name_text);
-            textView1 = itemView.findViewById(R.id.notelp_text);
-            textView2 = itemView.findViewById(R.id.motor_text);
-            textView3 = itemView.findViewById(R.id.harga_text);
+            textView = itemView.findViewById(R.id.tvNama);
+            textView1 = itemView.findViewById(R.id.tvNotelp);
+            textView2 = itemView.findViewById(R.id.tvMotor);
+            textView3 = itemView.findViewById(R.id.tvHarga);
             itemView.setOnClickListener(this);
         }
 

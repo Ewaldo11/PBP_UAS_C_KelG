@@ -2,64 +2,77 @@ package com.example.tubes_kelg_c;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
-@Entity
 public class Penyewa implements Serializable {
-    @PrimaryKey(autoGenerate = true)
-    public int id;
 
-    @ColumnInfo(name = "penyewa_nama")
-    public String nama;
+    private String namaPenyewa, noTelp, jenisMotor;
+    private int idPenyewa,harga;
 
-    @ColumnInfo(name = "penyewa_telp")
-    public String telp;
-
-    @ColumnInfo(name = "penyewa_motor")
-    public String namaMotor;
-
-    @ColumnInfo(name = "penyewa_harga")
-    public String harga;
-
-    public int getId() {
-        return id;
+    public Penyewa(int idPenyewa, String namaPenyewa, String noTelp, String jenisMotor, int harga) {
+        this.idPenyewa = idPenyewa;
+        this.namaPenyewa = namaPenyewa;
+        this.noTelp = noTelp;
+        this.jenisMotor = jenisMotor;
+        this.harga = harga;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Penyewa(String namaPenyewa, String noTelp, String jenisMotor, int harga) {
+        this.namaPenyewa = namaPenyewa;
+        this.noTelp = noTelp;
+        this.jenisMotor = jenisMotor;
+        this.harga = harga;
     }
 
-    public String getNama() {
-        return nama;
+
+    public String getNamaPenyewa() {
+        return namaPenyewa;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
+    public void setNamaPenyewa(String namaPenyewa) {
+        this.namaPenyewa = namaPenyewa;
     }
 
-    public String getTelp() {
-        return telp;
+    public String getNoTelp() {
+        return noTelp;
     }
 
-    public void setTelp(String telp) {
-        this.telp = telp;
+    public void setNoTelp(String noTelp) {
+        this.noTelp = noTelp;
     }
 
-    public String getNamaMotor() {
-        return namaMotor;
+    public String getJenisMotor() {
+        return jenisMotor;
     }
 
-    public void setNamaMotor(String namaMotor) {
-        this.namaMotor = namaMotor;
+    public void setJenisMotor(String jenisMotor) {
+        this.jenisMotor = jenisMotor;
     }
 
-    public String getHarga() {
+    public int getHarga() {
         return harga;
     }
 
-    public void setHarga(String harga) {
+    public void setHarga(int harga) {
         this.harga = harga;
+    }
+
+    public String getStringHarga(){
+        return String.valueOf(harga);
+    }
+
+    public void setStringharga(String harga){
+        this.harga = Integer.parseInt(harga);
+    }
+
+    public int getIdPenyewa() {
+        return idPenyewa;
+    }
+
+    public void setIdPenyewa(int idPenyewa) {
+        this.idPenyewa = idPenyewa;
     }
 }
